@@ -9,7 +9,8 @@ import os
 
 def testing():
     try:
-            make_mon = subprocess.call(['sudo','airmon-ng','start','wlan0','11'])
+            reset_mon = subprocess.call(['sudo','airmon-ng','stop','mon0'])
+            start_mon = subprocess.call(['sudo','airmon-ng','start','wlan0','11'])
             scan = subprocess.check_output(['sudo','arp-scan','--localnet','--interface=mon0'])
             tscan = scan.split("\t")
             targets = tscan[1::2]
