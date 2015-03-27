@@ -9,10 +9,13 @@ import os
 
 def testing():
     try:
-            make_mon = subprocess.call(['sudo','airmon-ng','start','wlan0','11'])
-            scan = subprocess.check_output(['sudo','arp-scan','--localnet','--interface=mon0'])
+            #make_mon = subprocess.call(['sudo','airmon-ng','start','mon0','11'])
+            scan = subprocess.check_output(['sudo','arp-scan','--localnet','--interface=en1'])
             tscan = scan.split("\t")
-            print tscan[1::2]
+           # print tscan[1::2]
+            #print type(tscan[1:2])
+            targets = tscan[1::2]
+            print targets
     except Exception, e:
             print "Error:", e
 
